@@ -1,0 +1,168 @@
+%================================================================================
+%=============================== DOCUMENT SETUP =================================
+%================================================================================
+
+%\documentclass[lang=ngerman,inputenc=ansinew,fontsize=10pt]{ldvarticle}
+\documentclass[lang=ngerman,inputenc=utf8,fontsize=10pt]{ldvarticle}
+	%PACKAGES
+
+		\usepackage{parskip}
+		\usepackage{subfigure}
+		\usepackage{ifthen}
+		\usepackage{comment}
+		\usepackage{color}
+		\usepackage{colortbl}
+		\usepackage{soul}
+		\usepackage{tikz}
+		\usetikzlibrary{shapes,arrows}
+		\usepackage{tabularx}
+
+
+		\definecolor{lightgray}{rgb}{0.75,0.75,0.75}
+
+
+%================================================================================
+%================================= TITLE PAGE ===================================
+%================================================================================
+
+\title{Sprecher- und Spracherkennung für Telekonferenz-Systeme}
+\subtitle{Projektplan}
+\author{Christoph Kozielski}
+
+\date{\today}
+
+\begin{document}
+
+
+	\maketitle
+	\thispagestyle{empty}
+	\vspace*{2cm}
+	\hrule
+
+\section*{Motivation}
+
+Systeme zur Durchführung von Telekonferenzen erfreuen sich steigender Beliebtheit in Unternehmen, Konzernen und auch bei Privatnutzern. Telekonferenzen sparen Reisekosten und Zeit und sie ermöglichen effiziente Zusammenarbeit über räumliche Distanz hinweg. Dem rasanten Wachstum des Marktes für Konferenzlösungen steht eine auffällige Innovationsarmut der angebotenen Produkte gegenüber. Die Nachteile heutiger Telekonferenzen, wie mangelhafte Sprachverständlichkeit unter ungünstigen Bedingungen, nicht vorhandene visuelle Informationen oder die fehlende Übersicht über die Teilnehmer der Konferenz und "wer zur Zeit spricht", werden durch die angebotenen Produkte, wie z.B. Konferenztelefone, nicht ausreichend ausgeglichen. Die Weiterentwicklung dieser Produkte beschränkt sich auf die Verbesserung bestehender Ansätze, anstatt wirklich innovative Produkte zu entwickeln.
+
+Dabei wäre es wünschenswert, die Vorteile aktueller Forschungsansätze für immersive Audiokommunikation als Produkt für Telekonferenzen nutzbar zu machen. Dies führt nicht nur zu einer starken Verbesserung der Sprachverständlichkeit und dem Ausgleichen der offensichtlichen Nachteile heutiger Systeme, sondern auch zu einer effektiveren, effizienteren und wirklichkeitsnäheren Kommunikation in Telekonferenzen.
+
+\vspace*{1cm}
+\hrule
+
+\newpage
+
+\section{Beschreibung der Arbeit}
+
+\subsection*{Zielsetzung}
+
+Ein immersives System für die Telekommunikation benötigt eine automatische Erkennung des Sprechers und dem Gesprochenen. Dies ermöglicht neben einer automatischen Protokollierung der Telekonferenz viele weitere Funktionalitäten: Der Gesprächspartner außerhalb eines Konferenzraumes erfährt nun, welcher Konferenzteilnehmer innerhalb des Konferenzraumes spricht. Außerdem werden die Teilnehmer getrennt voneinander übertragen. Die räumliche Wiedergabe der Konferenzsituation im Konferenzraum wird so für den Teilnehmer außerhalb ermöglicht.
+
+Das Ziel der Arbeit ist die Entwicklung eines Sprechererkenners für die Nutzung innerhalb eines immersiven Telekonferenzsystems und die Evaluierung des Einsatzes eines Spracherkenners zur automatischen Protokollierung von Telekonferenzen.
+
+\subsection*{Systemansatz}
+
+Der Sprechererkenner und der Spracherkenner sind Bausteine innerhalb des immersiven Telekonferenz-Systems. Das Gesamtsystem kann in drei grobe Abschnitte unterteilt werden: Die Aufnahmeseite, bestehend aus einem Konferenztelefon, die Übertragungsseite, zum Beispiel ein Server, und die Empfängerseite, zum Beispiel ein VoIP Client oder ein Telefon. Der Sprechererkenner ist ein Teil der Aufnahmeseite, um die einzelnen Sprecher vom Konferenztelefon aus getrennt übertragen zu können. Der Spracherkenner ist als Teil des Übertragungsservers angesiedelt, um ein automatisches Protokoll aus den einzelnen Kanälen zu erstellen und allen Teilnehmern verfügbar zu machen.
+
+Die Schnittstellen sind wie folgt definiert: Der Sprechererkenner bekommt ein Mono-Eingangssignal, idealerweise das Sprachsignal eines Sprechers, dass durch vorherige Vorverarbeitung, wie Beamforming und Filter, möglichst frei von Störgeräuschen, Echo und Raumhall ist. Das Ergebnis der Sprechererkennung ist die Zuordnung dieses Sprachsignals zu einer vorher bekannten Person und damit zu einem bestimmten Ausgangskanal des Konferenztelefons. Der Spracherkenner empfängt die Kanäle aller an der Konferenz beteiligten Teilnehmer und erhält auch Informationen über die Namen der sprechenden Personen. Daraus wird ein Dokument erstellt, dass die Sprache verschriftet und mit dem Namen des jeweils erkannten Sprechers verbindet.
+
+\section{Aufgaben}
+
+\begin{itemize}
+	\item \textbf{Recherche:}
+		\begin{itemize}
+			\item \textbf{Sprechererkennung:} Grundlagen, Funktionsweisen
+			\item \textbf{Sprechermerkmale:} Akustisch, Linguistisch, Extrahierung
+			\item \textbf{Sprechermodelle trainieren:} Parameter, Algorithmen, Training
+			\item \textbf{Adaptierung:} Dynamisches Lernen
+			\item \textbf{Entscheidungsverfahren:} Entscheidungsregeln, Grenzwerte
+			\item \textbf{Spracherkennung:} Vorhandene Algorithmen und robuste und nutzbare Implementierungen
+		\end{itemize}
+	\item \textbf{Evaluierung:} Analyse der vorgestellten Ansätze
+		\begin{itemize}
+			\item \textbf{Auswahl:} Vielversprechendste Algorithmen auswählen
+		\end{itemize}
+	\item \textbf{Implementierung:} Ausgewählte Algorithmen implementieren
+		\begin{itemize}
+			\item \textbf{Sprechererkennung:} Trainingsdaten erstellen, verschiedene Algorithmen implementieren
+			\item \textbf{Spracherkennung:} Bestehende Implementierungsansätze suchen und ggf. anpassen
+			\item \textbf{Videobasierte Erkennung:} Hinzufügen möglicher kamerabasierter Sprechererkennung
+			\item \textbf{Gesamtsystem:} Einfügen der verschiedenen Lösungen in das Gesamtsystem
+		\end{itemize}
+	\item \textbf{Analyse:} Entwurf und Durchführung praxisnaher Tests
+		\begin{itemize}
+			\item \textbf{Trainingsdaten:} Aufbau einer geeigneten Trainingsdatenbank für Sprecher
+			\item \textbf{Evaluierung I:} Evaluierung der verschiedenen Ansätze zur Sprechererkennung
+			\item \textbf{Evaluierung II:} Evaluierung der verschiedenen Ansätze zur Sprachererkennung
+			\item \textbf{Evaluierung III:} Evaluierung der Performance des Gesamtsystems
+		\end{itemize}
+	\item \textbf{Auswertung und Diskussion:} Ergebnisse zusammentragen und vergleichen
+		\begin{itemize}
+			\item \textbf{Aufbereitung der Ergebnisse:} Beschreibung der durchgeführten Tests und Visualisierung der Ergebnisse
+			\item \textbf{Diskussion:} Auswertung der Ergebnisse und kritische Betrachtung des Nutzens für das Gesamtsystem
+		\end{itemize}
+	\item \textbf{Ausarbeitung:} Abschließende schriftliche Darstellung der durchgeführten Arbeiten
+\end{itemize}
+
+\section{Zeitplan}
+
+\begin{center}
+\begin{footnotesize}
+\setlength{\arrayrulewidth}{1,05pt}
+\begin{tabular}[htb]{|m{0,15\textwidth}|p{.05cm}|p{.05cm}|p{.05cm}|p{.05cm}|p{.05cm}|p{.05cm}|p{.05cm}|p{.05cm}|p{.05cm}|p{.05cm}|p{.05cm}|p{.05cm}|p{.05cm}|p{.05cm}|p{.05cm}|p{.05cm}|p{.05cm}|p{.05cm}|p{.05cm}|p{.05cm}|p{.05cm}|p{.05cm}|}
+	\hline
+	\textbf{Monat}& \multicolumn{4}{|c|}{Mai} & \multicolumn{5}{|c|}{Juni} & \multicolumn{4}{|c|}{Juli} & \multicolumn{4}{|c|}{August} & \multicolumn{5}{|c|}{September}\\
+	\hline
+	\textbf{Woche}&\tiny\textbf{18}&\tiny\textbf{19}&\tiny\textbf{20}&\tiny\textbf{21}& \tiny \textbf{22} & \tiny \textbf{23} & \tiny \textbf{24} & \tiny \textbf{25} &  \tiny \textbf{26} &  \tiny \textbf{27} &  \tiny \textbf{28} &  \tiny \textbf{29}  &  \tiny \textbf{30} &  \tiny \textbf{31} &  \tiny \textbf{32} &  \tiny \textbf{33} &  \tiny \textbf{34} &  \tiny \textbf{35}  &  \tiny \textbf{36} &  \tiny \textbf{37} &  \tiny \textbf{38}  &  \tiny \textbf{39}\\
+	\hline
+	\hline
+	\rowcolor{lightgray} \textbf{Recherchen}& \cellcolor{red} & \cellcolor{red} & \cellcolor{red}& \cellcolor{red}& \cellcolor{red}& & & & & & & & & & & & & & & & &\\
+	\hline
+	\rowcolor{lightgray} \textbf{Evaluierung}& & & & & & \cellcolor{red} & \cellcolor{red} & & & & & & & & & & & & & & &\\
+	\hline
+	\rowcolor{lightgray} \textbf{Implementierung}& & & & & & & & \cellcolor{red} & \cellcolor{red} & \cellcolor{red} & \cellcolor{red} & \cellcolor{red} & & & & & & & & & &\\
+	\hline
+	\rowcolor{lightgray} \textbf{Analyse}& & & & & & & & & & & & & \cellcolor{red}& \cellcolor{red}& \cellcolor{red} & \cellcolor{red} & & & & & &\\
+	\hline
+	\rowcolor{lightgray} \textbf{Auswertung}& & & & & & & & & & & & & & & & \cellcolor{red} & \cellcolor{red} & \cellcolor{red} & & & &\\
+	\hline
+	\rowcolor{lightgray} \textbf{Ausarbeitung}& & & & & & & & & & & & & & & & & \cellcolor{red} &\cellcolor{red} & \cellcolor{red}& \cellcolor{red} &\cellcolor{red} & \cellcolor{red}\\
+	\hline
+
+\end{tabular}
+\end{footnotesize}
+\end{center}
+
+\section{Risikoanalyse}
+
+Eine vollständige Erfassung aller Sprecher- und Spracherkenner-Ansätze könnte sich als zu umfangreich herausstellen und müsste in diesem Falle fokussiert und eingeschränkt werden. Da beide Themen am Lehrstuhl für Datenverarbeitung noch nicht untersucht wurden, sind nur wenig konkrete Ergebnisse und Erfahrungen, auf die sich die Diplomarbeit stützen kann.
+
+Es kann noch nicht abgesehen werden, wie aufwändig sich die Implementierung eines Sprechererkenners gestaltet. Da die Ergebnisse des Sprecher- aber auch der Spracherkennung sehr stark von der Aufnahmequalität und der Vorverarbeitung abhängen und das Einsatzgebiet eines Konferenztelefons in halligen Konferenzräumen mit vielen Nebengeräuschen liegt, ist noch nicht abzusehen, ob die Erkennungsraten dem Anspruch einer anwendungstauglichen und robusten Realisierung genügen.
+
+Die Unterstützung der Sprechererkennung durch eine videobasierte Erkennung kann eine Verbesserung darstellen, könnte jedoch auch die Sprechererkennung über akustische Merkmale gänzlich überflüssig machen.
+
+Des weiteren können noch keine Aussagen gemacht werden, ob die gewählten Ansätze zu einer praxistauglichen, echtzeitfähigen Anwendung führen werden.
+
+%\section{Zur Person}
+
+%Christoph Kozielski ist Student der Elektro- und Informationstechnik im 10. Semester an der TU München. Seine Studienrichtung ist die Informations- und Kommunikationstechnik mit dem Schwerpunkt Mensch-Maschine-Interaktion. Seine Bachelorarbeit schrieb er am Lehrstuhl für Mensch-Maschine-Kommunikation mit dem Thema "Vocalist Gender Recognition in Recorded Popular Music".
+
+\section{Änderungen des Projektablaufes}
+Alle auftretenden Änderungen dieses Projektplanes werden in folgender Tabelle kurz notiert um Abweichungen und ggf. Änderungen des geplanten Ziels nachvollziehen zu können.
+
+\begin{tabular}[htbp]{|p{0,025\textwidth}||p{0,06\textwidth}|p{0,4\textwidth}|p{0,37\textwidth}|}
+	\hline
+	\textsc{\#} & \textsc{Datum} & \textsc{Änderung} & \textsc{Grund} \\
+	\hline
+	\hline
+	1 & & & \\[1em]
+	\hline
+	2 & & & \\[1em]
+	\hline
+	3 & & & \\[1em]
+	\hline
+	4 & & & \\[1em]
+	\hline
+	5 & & & \\[1em]
+	\hline
+\end{tabular}
+
+\end{document}
